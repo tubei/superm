@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    // 引入 dependencyManagement closure
+    id "io.spring.dependency-management" version "1.0.8.RELEASE"
+}
+
+
+ext {
+    springBootVersion = "2.1.6.RELEASE"
+}
+
+allprojects {
+
+    group 'com.doraemon'
+    version '0.0.1-SNAPSHOT'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+        }
+    }
+
+}
