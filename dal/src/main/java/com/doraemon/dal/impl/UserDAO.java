@@ -1,8 +1,8 @@
 package com.doraemon.dal.impl;
 
 import com.doraemon.dal.BaseDAO;
-import com.doraemon.data.tables.pojos.User;
-import com.doraemon.data.tables.records.UserRecord;
+import com.doraemon.data.gen.tables.pojos.User;
+import com.doraemon.data.gen.tables.records.UserRecord;
 
 /**
  * @author wl

@@ -1,8 +1,8 @@
 package com.doraemon.dal.impl;
 
-import com.doraemon.dal.Tables;
-import com.doraemon.dal.tables.pojos.User;
-import com.doraemon.dal.tables.records.UserRecord;
+import com.doraemon.data.gen.Tables;
+import com.doraemon.data.gen.tables.pojos.User;
+import com.doraemon.data.gen.tables.records.UserRecord;
 import org.jooq.Configuration;
 import org.jooq.Table;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
-package com.doraemon.dal.convert;
+package com.doraemon.data.convert;
 
-import com.doraemon.dal.enums.UserState;
-import com.doraemon.dal.enums.Valueable;
+import com.doraemon.data.enums.UserState;
+import com.doraemon.data.enums.Valueable;
 import org.jooq.Converter;
 import org.jooq.impl.EnumConverter;
 

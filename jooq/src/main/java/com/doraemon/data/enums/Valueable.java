@@ -1,4 +1,4 @@
-package com.doraemon.dal.enums;
+package com.doraemon.data.enums;
 
 /**
  * @author wl
