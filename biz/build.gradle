@@ -2,6 +2,7 @@ dependencies {
     compile(project(":dal"))
 
     implementation("org.springframework:spring-context")
+    implementation("org.apache.shiro:shiro-spring-boot-starter")
 
     testCompile group: 'junit', name: 'junit'
     testImplementation("org.springframework.boot:spring-boot-starter-test")

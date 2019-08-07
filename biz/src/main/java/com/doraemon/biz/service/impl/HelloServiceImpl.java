@@ -1,7 +1,7 @@
-package com.doraemon.service.impl;
+package com.doraemon.biz.service.impl;
 
+import com.doraemon.biz.service.HelloService;
 import com.doraemon.dal.HelloDAO;
-import com.doraemon.service.HelloService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

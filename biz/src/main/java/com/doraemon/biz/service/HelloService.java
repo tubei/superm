@@ -1,4 +1,4 @@
-package com.doraemon.service;
+package com.doraemon.biz.service;
 
 import org.springframework.stereotype.Service;
 

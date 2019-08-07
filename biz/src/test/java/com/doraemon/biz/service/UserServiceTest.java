@@ -1,4 +1,4 @@
-package com.doraemon.service;
+package com.doraemon.biz.service;
 
 import com.doraemon.data.gen.tables.pojos.User;
 import org.junit.Test;
