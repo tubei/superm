@@ -1,10 +1,11 @@
 plugins {
-    id 'org.springframework.boot' version '2.1.6.RELEASE'
+    id 'org.springframework.boot' version "2.1.6.RELEASE"
 }
 
 apply plugin: 'org.springframework.boot'
 
 configurations {
+
     developmentOnly
     runtimeClasspath {
         extendsFrom developmentOnly

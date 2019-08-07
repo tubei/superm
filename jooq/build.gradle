@@ -1,0 +1,82 @@
+plugins {
+    // jooq codegen plugin https://github.com/etiennestuder/gradle-jooq-plugin
+    id 'nu.studer.jooq' version '3.0.3'
+}
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-jooq'
+    jooqRuntime 'mysql:mysql-connector-java'
+}
+jooq {
+    version = "$jooqVersion"
+//    edition = 'OSS' default
+    superm(sourceSets.main) {
+        jdbc {
+            driver = "com.mysql.cj.jdbc.Driver"
+            url = "jdbc:mysql://local.mysql.host:3306/superm?useUnicode=true&characterEncoding=UTF-8"
+            user = "superm"
+            password = "A1*#UQU5uJ&^JFoc"
+            /*properties {
+                property {
+                    key = "ssl"
+                    value = false
+                }
+            }*/
+        }
+        generator {
+            name = 'org.jooq.codegen.DefaultGenerator'
+            strategy {
+                name = null
+                // ...
+                matchers {
+                    tables {
+                        table {
+                            tableClass {
+//                                transform = "UPPER"
+                                transform = "PASCAL"
+                                expression = 'T$0'
+                            }
+                        }
+                    }
+                }
+            }
+            database {
+                name = "org.jooq.meta.mysql.MySQLDatabase"
+                inputSchema = "superm"
+                //不使用 jooq 的 unsigned number 类型
+                unsignedTypes = false
+                /*includes = """
+
+                            """*/
+                excludes = "flyway_schema_history"
+                forcedTypes {
+                    /*forcedType {
+                        name = "Integer"
+                        types = "tinyint"
+                    }*/
+                    forcedType {
+                        userType = "com.doraemon.data.enums.UserState"
+                        converter = "com.doraemon.data.convert.DBEnumConverter.build(UserState.class)"
+                        expression = 'superm.user.state'
+                    }
+                }
+            }
+            generate {
+                javaTimeTypes = true
+//                immutablePojos = true
+                fluentSetters = true
+                pojos = true
+                records = true
+                daos = false
+                interfaces = false
+//                tables = false
+                springAnnotations = true
+            }
+            target {
+                packageName = "com.doraemon.data.gen"
+                // defualt directory build/generated-src/jooq
+                directory = "src/main/java"
+            }
+        }
+    }
+}
+

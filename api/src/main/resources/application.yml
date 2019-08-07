@@ -1,5 +1,3 @@
-spring:
-  datasource:
-    url: jdbc:mysql://j01.ci.zw.ted:3306/plus_test?useUnicode=true&characterEncoding=UTF-8
-    username: plus
-    password: 714a878b7c0f801eb9676d
+
+
+

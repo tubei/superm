@@ -1,7 +1,13 @@
+
 dependencies {
     implementation(project(":common"))
+    compile(project(":jooq"))
 
-    implementation 'org.springframework.boot:spring-boot-starter-jooq'
     runtimeOnly 'mysql:mysql-connector-java'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'org.springframework.data:spring-data-commons'
+    /**
+     * Spring Boot will then automatically autowire Flyway with its DataSource and invoke it on startup.
+     * https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html#howto-execute-flyway-database-migrations-on-startup
+     */
+    implementation 'org.flywaydb:flyway-core'
 }

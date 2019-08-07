@@ -3,4 +3,5 @@ include 'common'
 include 'dal'
 include 'biz'
 include 'api'
+include 'jooq'
 

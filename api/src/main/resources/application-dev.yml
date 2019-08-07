@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:mysql://local.mysql.host:3306/superm?useUnicode=true&characterEncoding=UTF-8
+    username: superm
+    password: A1*#UQU5uJ&^JFoc
+  flyway:
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
