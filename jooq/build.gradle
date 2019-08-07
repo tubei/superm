@@ -3,6 +3,7 @@ plugins {
     id 'nu.studer.jooq' version '3.0.3'
 }
 dependencies {
+    // do not use implementation
     compile 'org.springframework.boot:spring-boot-starter-jooq'
     jooqRuntime 'mysql:mysql-connector-java'
 }
@@ -42,6 +43,7 @@ jooq {
             database {
                 name = "org.jooq.meta.mysql.MySQLDatabase"
                 inputSchema = "superm"
+//                inputCatalog = 'superm'
                 //不使用 jooq 的 unsigned number 类型
                 unsignedTypes = false
                 /*includes = """

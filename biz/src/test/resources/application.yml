@@ -1,7 +1,19 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:testdb;MODE=MYSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false;CASE_INSENSITIVE_IDENTIFIERS=TRUE;INIT=create schema if not exists superm\;
     driver-class-name: org.h2.Driver
-    schema: db/migration/
+    username: sa
+    password: sa
+#    schema: classpath:db/migration/V1__Create_RBAC_table.sql
+#    data: db/init_data.sql
+
   jooq:
     sql-dialect: h2
+  flyway:
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    baseline-on-migrate: true
+    locations: classpath:db/migration, db/init
+    schemas: superm
+#    enabled: false

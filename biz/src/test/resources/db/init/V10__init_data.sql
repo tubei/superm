@@ -1,0 +1,1 @@
+insert into user(username, password, state) values ('wang', 'test', 0);
