@@ -1,6 +1,6 @@
 
 dependencies {
-    implementation(project(":common"))
+    compile(project(":common"))
     compile(project(":jooq"))
 
     runtimeOnly 'mysql:mysql-connector-java'

@@ -4,7 +4,6 @@ import com.doraemon.data.gen.Tables;
 import com.doraemon.data.gen.tables.pojos.User;
 import com.doraemon.data.gen.tables.records.UserRecord;
 import org.jooq.Configuration;
-import org.jooq.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,5 +21,10 @@ public class UserDAOImpl extends BaseDAOImpl<UserRecord, User, Integer> implemen
   @Override
   protected Integer getId(User object) {
     return object.getId();
+  }
+
+  @Override
+  public User fetchByUsername(String username) {
+    return fetchOne(Tables.USER.USERNAME, username);
   }
 }

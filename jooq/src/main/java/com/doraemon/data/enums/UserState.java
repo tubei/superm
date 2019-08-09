@@ -18,6 +18,14 @@ public enum UserState implements Valueable {
     this.desc = desc;
   }
 
+  public static boolean isActive(UserState state) {
+    return state == ACTIVE;
+  }
+
+  public static boolean isDisable(UserState state) {
+    return state == DISABLE;
+  }
+
   @Override
   public int getValue() {
     return value;

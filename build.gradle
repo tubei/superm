@@ -11,6 +11,8 @@ ext {
     jooqVersion = "3.11.11"
     h2Version = "1.4.199"
     shiroStarterVersion = "1.4.1"
+    lombokVersion = "1.18.8"
+    springRESTDocsVersion = "2.0.0.RELEASE"
 }
 //allprojects {
 subprojects {
@@ -40,7 +42,17 @@ subprojects {
             }*/
             dependency group: 'com.h2database', name: 'h2', version: "$h2Version"
             dependency "org.apache.shiro:shiro-spring-boot-starter:$shiroStarterVersion"
+            dependency group: 'org.projectlombok', name: 'lombok', version: "$lombokVersion"
+
+            dependency "org.springframework.restdocs:spring-restdocs-asciidoctor:$springRESTDocsVersion"
+            dependency "org.springframework.restdocs:spring-restdocs-mockmvc:$springRESTDocsVersion"
         }
+    }
+
+    dependencies {
+        //https://projectlombok.org/setup/gradle
+        compileOnly "org.projectlombok:lombok"
+        annotationProcessor 'org.projectlombok:lombok'
     }
 
 }

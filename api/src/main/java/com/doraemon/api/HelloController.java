@@ -1,6 +1,7 @@
 package com.doraemon.api;
 
 import com.doraemon.biz.service.HelloService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,8 +15,11 @@ import javax.annotation.Resource;
 @RequestMapping("/api")
 public class HelloController {
 
-  @Resource
-  private HelloService helloService;
+  private final HelloService helloService;
+
+  public HelloController(HelloService helloService) {
+    this.helloService = helloService;
+  }
 
   @GetMapping("/hello/world")
   public String helloWorld() {

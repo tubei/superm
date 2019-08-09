@@ -7,3 +7,6 @@ spring:
     url: ${spring.datasource.url}
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
+logging:
+  level:
+    org.jooq.tools.LoggerListener: debug

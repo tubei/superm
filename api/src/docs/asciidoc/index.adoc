@@ -1,0 +1,15 @@
+= REST API 文档
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+== 用户
+
+=== 登录
+
+使用 `GET` 请求来访问首页。
+
+operation::user[snippets='request-parameters,http-request,http-response']
