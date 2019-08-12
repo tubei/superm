@@ -1,9 +1,11 @@
 package com.doraemon.biz.authz;
 
+import com.doraemon.common.crypto.BCrypt;
 import com.doraemon.dal.impl.UserDAO;
 import com.doraemon.data.enums.UserState;
 import com.doraemon.data.gen.tables.pojos.User;
 import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.realm.AuthenticatingRealm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,12 +16,23 @@ import javax.security.auth.login.AccountNotFoundException;
  * @author tubei
  */
 @Component
-public class AuthRealm extends AuthenticatingRealm {
+public class PasswordAuthRealm extends AuthenticatingRealm {
 
   private final UserDAO userDAO;
 
-  public AuthRealm(UserDAO userDAO) {
+  public PasswordAuthRealm(UserDAO userDAO) {
     this.userDAO = userDAO;
+    setCredentialsMatcher((token, info) -> {
+      UsernamePasswordToken userToken = (UsernamePasswordToken) token;
+      char[] rawPassword = userToken.getPassword();
+      String encryptedPassword = info.getCredentials().toString();
+      return BCrypt.checkpw(String.valueOf(rawPassword), encryptedPassword);
+    });
+  }
+
+  @Override
+  public CredentialsMatcher getCredentialsMatcher() {
+    return super.getCredentialsMatcher();
   }
 
   @Override
@@ -32,8 +45,7 @@ public class AuthRealm extends AuthenticatingRealm {
     if (UserState.isDisable(user.getState())) {
       throw new DisabledAccountException();
     }
-
-    return new SimpleAuthenticationInfo();
+    return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
   }
 
   @Override

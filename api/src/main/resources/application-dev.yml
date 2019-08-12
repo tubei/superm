@@ -7,6 +7,9 @@ spring:
     url: ${spring.datasource.url}
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
+  jackson:
+    default-property-inclusion: non_null
 logging:
   level:
     org.jooq.tools.LoggerListener: debug
+#    org.springframework: debug

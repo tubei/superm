@@ -1,4 +1,4 @@
-package com.doraemon.vo;
+package com.doraemon.api.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,8 +20,22 @@ public class ApiResult<T> {
 
   private static final String DEFAULT_SUCCESS_MSG = "success";
 
+  public ApiResult(T data) {
+    this.code = 0;
+    this.message = DEFAULT_SUCCESS_MSG;
+    this.data = data;
+  }
+
   @SuppressWarnings("unchecked")
   public static ApiResult ok() {
     return new ApiResult(0, DEFAULT_SUCCESS_MSG, null);
+  }
+
+  public static ApiResult<?> unauthorized() {
+    return new ApiResult<>(401, "UNAUTHORIZED", null);
+  }
+
+  public static ApiResult<?> forbidden() {
+    return new ApiResult<>(403, "FORBIDDEN", null);
   }
 }

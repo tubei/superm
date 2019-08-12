@@ -1,14 +1,13 @@
-package com.doraemon.api;
+package com.doraemon.api.controller;
 
 import com.doraemon.common.crypto.BCrypt;
 import com.doraemon.dal.impl.UserDAO;
 import com.doraemon.data.gen.tables.pojos.User;
-import com.doraemon.vo.ApiResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.doraemon.api.vo.ApiResult;
 /**
  * @author tubei
  */

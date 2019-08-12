@@ -1,2 +1,4 @@
 dependencies {
+    compileOnly group: 'com.fasterxml.jackson.core', name: 'jackson-core'
+    compileOnly group: 'com.fasterxml.jackson.core', name: 'jackson-databind'
 }

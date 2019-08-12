@@ -1,4 +1,4 @@
-package com.doraemon.api;
+package com.doraemon.api.controller;
 
 import com.doraemon.biz.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;

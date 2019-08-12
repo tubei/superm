@@ -13,6 +13,7 @@ ext {
     shiroStarterVersion = "1.4.1"
     lombokVersion = "1.18.8"
     springRESTDocsVersion = "2.0.0.RELEASE"
+    jwtVersion = "3.8.1"
 }
 //allprojects {
 subprojects {
@@ -41,11 +42,12 @@ subprojects {
                 entry 'slf4j-simple'
             }*/
             dependency group: 'com.h2database', name: 'h2', version: "$h2Version"
-            dependency "org.apache.shiro:shiro-spring-boot-starter:$shiroStarterVersion"
+            dependency "org.apache.shiro:shiro-spring-boot-web-starter:$shiroStarterVersion"
             dependency group: 'org.projectlombok', name: 'lombok', version: "$lombokVersion"
 
             dependency "org.springframework.restdocs:spring-restdocs-asciidoctor:$springRESTDocsVersion"
             dependency "org.springframework.restdocs:spring-restdocs-mockmvc:$springRESTDocsVersion"
+            dependency group: 'com.auth0', name: 'java-jwt', version: "$jwtVersion"
         }
     }
 
