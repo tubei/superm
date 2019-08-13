@@ -2,12 +2,14 @@ package com.doraemon.biz.authz;
 
 import com.doraemon.biz.error.BizException;
 import com.doraemon.common.crypto.BCrypt;
-import com.doraemon.dal.impl.UserDAO;
+import com.doraemon.dal.UserDAO;
 import com.doraemon.data.enums.UserState;
 import com.doraemon.data.gen.tables.pojos.User;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
-import org.apache.shiro.realm.AuthenticatingRealm;
+import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.stereotype.Component;
 
 import static com.doraemon.biz.error.ErrorEnum.USER_IS_DISABLED;
@@ -17,7 +19,7 @@ import static com.doraemon.biz.error.ErrorEnum.USER_NOT_EXISTS;
  * @author tubei
  */
 @Component
-public class PasswordAuthRealm extends AuthenticatingRealm {
+public class PasswordAuthRealm extends AuthorizingRealm {
 
   private final UserDAO userDAO;
 
@@ -52,5 +54,11 @@ public class PasswordAuthRealm extends AuthenticatingRealm {
   @Override
   public boolean supports(AuthenticationToken token) {
     return token instanceof UsernamePasswordToken;
+  }
+
+  @Override
+  protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+    User principal = (User) getAvailablePrincipal(principals);
+    return null;
   }
 }
