@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.annotation.Generated;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 /**
@@ -23,7 +25,7 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Role implements Serializable {
 
-    private static final long serialVersionUID = -104167848;
+    private static final long serialVersionUID = -2137167774;
 
     private Integer       id;
     private String        name;
@@ -64,6 +66,8 @@ public class Role implements Serializable {
         return this;
     }
 
+    @NotNull
+    @Size(max = 64)
     public String getName() {
         return this.name;
     }
@@ -73,6 +77,7 @@ public class Role implements Serializable {
         return this;
     }
 
+    @Size(max = 256)
     public String getDesc() {
         return this.desc;
     }

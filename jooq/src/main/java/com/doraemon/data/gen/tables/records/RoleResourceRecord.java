@@ -9,6 +9,7 @@ import com.doraemon.data.gen.tables.TroleResource;
 import java.time.LocalDateTime;
 
 import javax.annotation.Generated;
+import javax.validation.constraints.NotNull;
 
 import org.jooq.Field;
 import org.jooq.Record4;
@@ -29,7 +30,7 @@ import org.jooq.impl.TableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class RoleResourceRecord extends TableRecordImpl<RoleResourceRecord> implements Record4<Integer, Integer, LocalDateTime, LocalDateTime> {
 
-    private static final long serialVersionUID = 622266904;
+    private static final long serialVersionUID = -1183412561;
 
     /**
      * Setter for <code>superm.role_resource.role_id</code>. role id
@@ -42,6 +43,7 @@ public class RoleResourceRecord extends TableRecordImpl<RoleResourceRecord> impl
     /**
      * Getter for <code>superm.role_resource.role_id</code>. role id
      */
+    @NotNull
     public Integer getRoleId() {
         return (Integer) get(0);
     }
@@ -57,6 +59,7 @@ public class RoleResourceRecord extends TableRecordImpl<RoleResourceRecord> impl
     /**
      * Getter for <code>superm.role_resource.resource_id</code>. resource id
      */
+    @NotNull
     public Integer getResourceId() {
         return (Integer) get(1);
     }

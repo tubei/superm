@@ -1,15 +1,14 @@
 package com.doraemon.api.controller;
 
-import com.doraemon.data.gen.tables.pojos.User;
 import com.doraemon.api.vo.ApiResult;
+import com.doraemon.data.gen.tables.pojos.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresGuest;
+import org.apache.shiro.authz.annotation.RequiresUser;
 import org.apache.shiro.subject.Subject;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -23,6 +22,13 @@ import javax.validation.constraints.NotNull;
 @RequestMapping("/session")
 public class SessionController {
 
+  @GetMapping
+  public ApiResult<?> getSession(){
+    Subject subject = SecurityUtils.getSubject();
+    Object principal = subject.getPrincipal();
+    return new ApiResult<>(principal);
+  }
+
   @PostMapping
   @RequiresGuest
   public ApiResult<?> createSession(@RequestParam @Valid @NotNull String username,
@@ -33,5 +39,18 @@ public class SessionController {
       subject.login(token);
     }
     return new ApiResult<>((User) subject.getPrincipal());
+  }
+
+  /**
+   * delete session to login out
+   */
+  @DeleteMapping
+  @RequiresAuthentication
+  public ApiResult<?> delete() {
+    Subject subject = SecurityUtils.getSubject();
+    if (subject.isAuthenticated()) {
+      subject.logout();
+    }
+    return ApiResult.ok();
   }
 }

@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.annotation.Generated;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -23,7 +24,7 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class UserRole implements Serializable {
 
-    private static final long serialVersionUID = 1686531897;
+    private static final long serialVersionUID = -58018014;
 
     private Integer       userId;
     private Integer       roleId;
@@ -51,6 +52,7 @@ public class UserRole implements Serializable {
         this.updateTime = updateTime;
     }
 
+    @NotNull
     public Integer getUserId() {
         return this.userId;
     }
@@ -60,6 +62,7 @@ public class UserRole implements Serializable {
         return this;
     }
 
+    @NotNull
     public Integer getRoleId() {
         return this.roleId;
     }

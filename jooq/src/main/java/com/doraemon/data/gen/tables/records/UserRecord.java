@@ -10,6 +10,8 @@ import com.doraemon.data.gen.tables.Tuser;
 import java.time.LocalDateTime;
 
 import javax.annotation.Generated;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.jooq.Field;
 import org.jooq.Record1;
@@ -31,7 +33,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Record6<Integer, String, String, UserState, LocalDateTime, LocalDateTime> {
 
-    private static final long serialVersionUID = 41621149;
+    private static final long serialVersionUID = -1142548796;
 
     /**
      * Setter for <code>superm.user.id</code>.
@@ -59,6 +61,8 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Getter for <code>superm.user.username</code>. 帐号名称，唯一，手机号或邮箱
      */
+    @NotNull
+    @Size(max = 32)
     public String getUsername() {
         return (String) get(1);
     }
@@ -74,6 +78,7 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Getter for <code>superm.user.password</code>. 加密后的密码
      */
+    @Size(max = 128)
     public String getPassword() {
         return (String) get(2);
     }

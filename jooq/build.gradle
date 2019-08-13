@@ -6,6 +6,9 @@ dependencies {
     // do not use implementation
     compile 'org.springframework.boot:spring-boot-starter-jooq'
     jooqRuntime 'mysql:mysql-connector-java'
+
+    compileOnly group: 'org.hibernate', name: 'hibernate-validator'
+    compileOnly group: 'javax.validation', name: 'validation-api'
 }
 jooq {
     version = "$jooqVersion"
@@ -60,6 +63,11 @@ jooq {
                         converter = "com.doraemon.data.convert.DBEnumConverter.build(UserState.class)"
                         expression = 'superm.user.state'
                     }
+                    forcedType {
+                        userType = "com.doraemon.data.enums.ResourceType"
+                        converter = "com.doraemon.data.convert.DBEnumConverter.build(ResourceType.class)"
+                        expression = 'superm.resource.type'
+                    }
                 }
             }
             generate {
@@ -72,6 +80,8 @@ jooq {
                 interfaces = false
 //                tables = false
                 springAnnotations = true
+                validationAnnotations = true
+                // jpaAnnotations=true
             }
             target {
                 packageName = "com.doraemon.data.gen"

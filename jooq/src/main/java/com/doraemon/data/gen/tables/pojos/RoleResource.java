@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.annotation.Generated;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -23,7 +24,7 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class RoleResource implements Serializable {
 
-    private static final long serialVersionUID = 895066218;
+    private static final long serialVersionUID = -1930142791;
 
     private Integer       roleId;
     private Integer       resourceId;
@@ -51,6 +52,7 @@ public class RoleResource implements Serializable {
         this.updateTime = updateTime;
     }
 
+    @NotNull
     public Integer getRoleId() {
         return this.roleId;
     }
@@ -60,6 +62,7 @@ public class RoleResource implements Serializable {
         return this;
     }
 
+    @NotNull
     public Integer getResourceId() {
         return this.resourceId;
     }

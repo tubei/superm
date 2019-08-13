@@ -10,6 +10,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.annotation.Generated;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 /**
@@ -25,7 +27,7 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User implements Serializable {
 
-    private static final long serialVersionUID = -329772179;
+    private static final long serialVersionUID = -223077690;
 
     private Integer       id;
     private String        username;
@@ -70,6 +72,8 @@ public class User implements Serializable {
         return this;
     }
 
+    @NotNull
+    @Size(max = 32)
     public String getUsername() {
         return this.username;
     }
@@ -79,6 +83,7 @@ public class User implements Serializable {
         return this;
     }
 
+    @Size(max = 128)
     public String getPassword() {
         return this.password;
     }

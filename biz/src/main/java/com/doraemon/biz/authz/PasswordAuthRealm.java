@@ -1,5 +1,6 @@
 package com.doraemon.biz.authz;
 
+import com.doraemon.biz.error.BizException;
 import com.doraemon.common.crypto.BCrypt;
 import com.doraemon.dal.impl.UserDAO;
 import com.doraemon.data.enums.UserState;
@@ -7,10 +8,10 @@ import com.doraemon.data.gen.tables.pojos.User;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.realm.AuthenticatingRealm;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.security.auth.login.AccountNotFoundException;
+import static com.doraemon.biz.error.ErrorEnum.USER_IS_DISABLED;
+import static com.doraemon.biz.error.ErrorEnum.USER_NOT_EXISTS;
 
 /**
  * @author tubei
@@ -40,10 +41,10 @@ public class PasswordAuthRealm extends AuthenticatingRealm {
     UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) token;
     User user = userDAO.fetchByUsername(usernamePasswordToken.getUsername());
     if (user == null) {
-      throw new UnknownAccountException();
+      throw new UnknownAccountException(BizException.error(USER_NOT_EXISTS));
     }
     if (UserState.isDisable(user.getState())) {
-      throw new DisabledAccountException();
+      throw new DisabledAccountException(BizException.error(USER_IS_DISABLED));
     }
     return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
   }

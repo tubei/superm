@@ -4,6 +4,7 @@
 package com.doraemon.data.gen.tables;
 
 
+import com.doraemon.data.enums.ResourceType;
 import com.doraemon.data.gen.Indexes;
 import com.doraemon.data.gen.Keys;
 import com.doraemon.data.gen.Superm;
@@ -41,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tresource extends TableImpl<ResourceRecord> {
 
-    private static final long serialVersionUID = -625213914;
+    private static final long serialVersionUID = -581097223;
 
     /**
      * The reference instance of <code>superm.resource</code>
@@ -79,7 +80,7 @@ public class Tresource extends TableImpl<ResourceRecord> {
     /**
      * The column <code>superm.resource.type</code>. 资源类型，菜单、资源等
      */
-    public final TableField<ResourceRecord, Byte> TYPE = createField("type", org.jooq.impl.SQLDataType.TINYINT.nullable(false), this, "资源类型，菜单、资源等");
+    public final TableField<ResourceRecord, ResourceType> TYPE = createField("type", org.jooq.impl.SQLDataType.TINYINT.nullable(false), this, "资源类型，菜单、资源等", com.doraemon.data.convert.DBEnumConverter.build(ResourceType.class));
 
     /**
      * The column <code>superm.resource.parent_id</code>. 父id

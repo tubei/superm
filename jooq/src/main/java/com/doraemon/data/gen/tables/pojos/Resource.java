@@ -4,9 +4,13 @@
 package com.doraemon.data.gen.tables.pojos;
 
 
+import com.doraemon.data.enums.ResourceType;
+
 import java.io.Serializable;
 
 import javax.annotation.Generated;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 /**
@@ -22,14 +26,14 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Resource implements Serializable {
 
-    private static final long serialVersionUID = -1737441587;
+    private static final long serialVersionUID = -417322533;
 
-    private Integer id;
-    private String  name;
-    private String  desc;
-    private String  path;
-    private Byte    type;
-    private Integer parentId;
+    private Integer      id;
+    private String       name;
+    private String       desc;
+    private String       path;
+    private ResourceType type;
+    private Integer      parentId;
 
     public Resource() {}
 
@@ -43,12 +47,12 @@ public class Resource implements Serializable {
     }
 
     public Resource(
-        Integer id,
-        String  name,
-        String  desc,
-        String  path,
-        Byte    type,
-        Integer parentId
+        Integer      id,
+        String       name,
+        String       desc,
+        String       path,
+        ResourceType type,
+        Integer      parentId
     ) {
         this.id = id;
         this.name = name;
@@ -67,6 +71,8 @@ public class Resource implements Serializable {
         return this;
     }
 
+    @NotNull
+    @Size(max = 64)
     public String getName() {
         return this.name;
     }
@@ -76,6 +82,7 @@ public class Resource implements Serializable {
         return this;
     }
 
+    @Size(max = 256)
     public String getDesc() {
         return this.desc;
     }
@@ -85,6 +92,7 @@ public class Resource implements Serializable {
         return this;
     }
 
+    @Size(max = 256)
     public String getPath() {
         return this.path;
     }
@@ -94,11 +102,12 @@ public class Resource implements Serializable {
         return this;
     }
 
-    public Byte getType() {
+    @NotNull
+    public ResourceType getType() {
         return this.type;
     }
 
-    public Resource setType(Byte type) {
+    public Resource setType(ResourceType type) {
         this.type = type;
         return this;
     }

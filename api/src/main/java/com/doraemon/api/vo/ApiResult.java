@@ -1,5 +1,6 @@
 package com.doraemon.api.vo;
 
+import com.doraemon.biz.error.ErrorEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,5 +38,9 @@ public class ApiResult<T> {
 
   public static ApiResult<?> forbidden() {
     return new ApiResult<>(403, "FORBIDDEN", null);
+  }
+
+  public static ApiResult<?> error(ErrorEnum error) {
+    return new ApiResult<>(error.getCode(), error.getMsg(), null);
   }
 }

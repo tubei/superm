@@ -9,6 +9,8 @@ import com.doraemon.data.gen.tables.Trole;
 import java.time.LocalDateTime;
 
 import javax.annotation.Generated;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.jooq.Field;
 import org.jooq.Record1;
@@ -30,7 +32,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Record5<Integer, String, String, LocalDateTime, LocalDateTime> {
 
-    private static final long serialVersionUID = 1645347050;
+    private static final long serialVersionUID = 98439266;
 
     /**
      * Setter for <code>superm.role.id</code>.
@@ -58,6 +60,8 @@ public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Recor
     /**
      * Getter for <code>superm.role.name</code>. 角色名称
      */
+    @NotNull
+    @Size(max = 64)
     public String getName() {
         return (String) get(1);
     }
@@ -73,6 +77,7 @@ public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Recor
     /**
      * Getter for <code>superm.role.desc</code>. 角色描述
      */
+    @Size(max = 256)
     public String getDesc() {
         return (String) get(2);
     }
