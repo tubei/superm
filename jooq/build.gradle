@@ -82,10 +82,11 @@ jooq {
                 springAnnotations = true
                 validationAnnotations = true
                 // jpaAnnotations=true
+                // jpaVersion=2.2
             }
             target {
                 packageName = "com.doraemon.data.gen"
-                // defualt directory build/generated-src/jooq
+                // default directory build/generated-src/jooq
                 directory = "src/main/java"
             }
         }

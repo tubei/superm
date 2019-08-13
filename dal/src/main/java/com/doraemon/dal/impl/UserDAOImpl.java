@@ -1,5 +1,6 @@
 package com.doraemon.dal.impl;
 
+import com.doraemon.dal.UserDAO;
 import com.doraemon.data.gen.Tables;
 import com.doraemon.data.gen.tables.pojos.User;
 import com.doraemon.data.gen.tables.records.UserRecord;
